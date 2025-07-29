@@ -12,9 +12,12 @@ import { AuthError } from 'next-auth';
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
-) { 
+) {
   try {
-    await signIn('credentials', formData);
+    const redirectTo = formData.get('redirectTo')?.toString() || '/dashboard';
+    await signIn('credentials', {
+      redirectTo, // <-- This makes sure redirect is passed properly
+    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
