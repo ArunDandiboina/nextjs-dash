@@ -18,15 +18,21 @@ const config: Config = {
           600: '#2F6FEB',
         },
       },
-    },
-    keyframes: {
-      shimmer: {
-        '100%': {
-          transform: 'translateX(100%)',
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
         },
+        // You can also extend or define spin if needed, but Tailwind already provides one by default
+      },
+      // Optional: if you defined custom animations
+      animation: {
+        shimmer: 'shimmer 2s infinite',
       },
     },
   },
   plugins: [require('@tailwindcss/forms')],
 };
+
 export default config;
